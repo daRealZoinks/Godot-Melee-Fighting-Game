@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ckebeudkv5vp7"]
+
+[ext_resource type="AudioStream" uid="uid://eobwwndpmedh" path="res://assets/audio/Hatch.ogg" id="1_e0rqm"]
+
+[node name="Hatch" type="AudioStreamPlayer3D" unique_id=1000219589]
+stream = ExtResource("1_e0rqm")
+volume_db = 8.224
+autoplay = true

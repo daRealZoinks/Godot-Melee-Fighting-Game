@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dxq5cjj75bnxf"]
+
+[ext_resource type="Texture2D" uid="uid://vdcfvxarfyrm" path="res://assets/textures/mqdefault.jpg" id="1_ehdfg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dfawc"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ehdfg"]
+sky_material = SubResource("ProceduralSkyMaterial_dfawc")
+
+[sub_resource type="Environment" id="Environment_ctrum"]
+background_mode = 2
+sky = SubResource("Sky_ehdfg")
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ce077"]
+size = Vector2(100, 100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ce077"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_ce077"]
+left_to_right = 1.0
+size = Vector3(5, 5, 5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dfawc"]
+points = PackedVector3Array(-2.5396824, -2.3805947, -2.5386884, 2.5, 2.499507, 2.4990215, 2.5, 2.499507, -2.4990215, 2.5, -2.4995148, 2.4990215, -2.5396824, -2.3805947, 2.5386884, 2.5, -2.4995148, -2.4990215, 2.3805795, 2.5391855, -2.5386884, -2.4999962, -2.5, -2.4990177, 2.3805795, 2.5391855, 2.5386884, -2.4999962, -2.5, 2.4990177, 1.0311866, 1.1904218, 2.5386884, 1.7966887, -2.5, 2.4990177, 1.0311866, 1.1904218, -2.5386884, 1.7966887, -2.5, -2.4990177)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53ykc"]
+albedo_texture = ExtResource("1_ehdfg")
+uv1_offset = Vector3(0.3, 0.09, 0)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ce077"]
+material = SubResource("StandardMaterial3D_53ykc")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ce077"]
+radius = 0.45
+height = 1.95
+
+[node name="MightyBean" type="Node3D" unique_id=926947766]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1152847492]
+environment = SubResource("Environment_ctrum")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1815805797]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Plan" type="StaticBody3D" parent="." unique_id=1132995981]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plan" unique_id=1109904230]
+mesh = SubResource("PlaneMesh_ce077")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plan" unique_id=1884038918]
+shape = SubResource("WorldBoundaryShape3D_ce077")
+
+[node name="Tobogan" type="StaticBody3D" parent="." unique_id=173090965]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tobogan" unique_id=1465714887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("PrismMesh_ce077")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tobogan" unique_id=2111407347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("ConvexPolygonShape3D_dfawc")
+
+[node name="MightyBean" type="RigidBody3D" parent="." unique_id=1989561167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6889857, 5.4326015, -2.3841858e-07)
+mass = 0.003
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MightyBean" unique_id=348636840]
+mesh = SubResource("CapsuleMesh_ce077")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MightyBean" unique_id=932351090]
+shape = SubResource("CapsuleShape3D_ce077")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1367562729]
+transform = Transform3D(0.8362856, 0.31252566, -0.45050436, 0, 0.8216472, 0.56999636, 0.5482941, -0.47667974, 0.68713176, -3.3431048, 6.834751, 5.7536826)

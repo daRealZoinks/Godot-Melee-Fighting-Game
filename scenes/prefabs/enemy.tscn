@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bnyyqxu02rj5f"]
+
+[ext_resource type="Script" uid="uid://dr5kqspfojg4s" path="res://scripts/enemy.gd" id="1_ki7k3"]
+[ext_resource type="Material" uid="uid://dmkya1kje10um" path="res://materials/banana.tres" id="2_r0tgt"]
+[ext_resource type="AudioStream" uid="uid://dq3ss4pjagol0" path="res://assets/audio/vine-boom-sound-effect_KT89XIq.ogg" id="3_0dpx5"]
+[ext_resource type="AudioStream" uid="uid://b3v1mswxguwpy" path="res://assets/audio/Chicken on tree screaming viral sound effect Meme sound.ogg" id="3_r0tgt"]
+[ext_resource type="Script" uid="uid://22r26eif876p" path="res://scripts/health.gd" id="5_2dc6b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ce077"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ce077"]
+material = ExtResource("2_r0tgt")
+
+[node name="Enemy" type="CharacterBody3D" unique_id=132416769]
+script = ExtResource("1_ki7k3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1638030724]
+shape = SubResource("CapsuleShape3D_ce077")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1245356808]
+mesh = SubResource("CapsuleMesh_ce077")
+
+[node name="ChickenSound" type="AudioStreamPlayer3D" parent="." unique_id=416793118]
+stream = ExtResource("3_r0tgt")
+
+[node name="VineBoomSound" type="AudioStreamPlayer3D" parent="." unique_id=1275622846]
+stream = ExtResource("3_0dpx5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1099099650]
+target_desired_distance = 1.01
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="Health" type="Node" parent="." unique_id=1912401952]
+script = ExtResource("5_2dc6b")
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="died" from="Health" to="." method="_on_health_died"]
+[connection signal="died" from="Health" to="Health" method="_on_died"]
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
