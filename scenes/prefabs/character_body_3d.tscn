@@ -199,7 +199,7 @@ transform = Transform3D(1, 3.3527613e-08, 0, -5.5879354e-08, 1.0000001, 1.490116
 mesh = SubResource("BoxMesh_ce077")
 
 [node name="Elbow" type="Node3D" parent="Neck/Arms/RightShoulder/Forearm" unique_id=875711823]
-transform = Transform3D(0.9890637, 0.05065571, 0.13852058, 0.13223802, -0.7205081, -0.68072104, 0.06532284, 0.6915934, -0.71932703, -8.940697e-08, -2.9802322e-08, -0.15500045)
+transform = Transform3D(0.9890637, 0.050655704, 0.13852058, 0.13223802, -0.72050804, -0.68072104, 0.06532284, 0.69159335, -0.71932703, -8.940697e-08, -2.9802322e-08, -0.15500045)
 
 [node name="Arm" type="MeshInstance3D" parent="Neck/Arms/RightShoulder/Forearm/Elbow" unique_id=1945987759]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 8.940697e-08, -0.14999996)
