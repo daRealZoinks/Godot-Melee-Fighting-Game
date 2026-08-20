@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djbwld372bsrw"
-path.s3tc="res://.godot/imported/lpRobot_baseColor.png-e595babbe319c7684b39ccfc818043aa.s3tc.ctex"
+path.etc2="res://.godot/imported/lpRobot_baseColor.png-e595babbe319c7684b39ccfc818043aa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/3d_models/low_poly_humanoid_robot/textures/lpRobot_baseColor.png"
-dest_files=["res://.godot/imported/lpRobot_baseColor.png-e595babbe319c7684b39ccfc818043aa.s3tc.ctex"]
+dest_files=["res://.godot/imported/lpRobot_baseColor.png-e595babbe319c7684b39ccfc818043aa.etc2.ctex"]
 
 [params]
 

@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4nobw24ddh70"
-path.s3tc="res://.godot/imported/lpRobot_emissive.png-6ae4c27ce683127000e930e72db0f4f0.s3tc.ctex"
+path.etc2="res://.godot/imported/lpRobot_emissive.png-6ae4c27ce683127000e930e72db0f4f0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/3d_models/low_poly_humanoid_robot/textures/lpRobot_emissive.png"
-dest_files=["res://.godot/imported/lpRobot_emissive.png-6ae4c27ce683127000e930e72db0f4f0.s3tc.ctex"]
+dest_files=["res://.godot/imported/lpRobot_emissive.png-6ae4c27ce683127000e930e72db0f4f0.etc2.ctex"]
 
 [params]
 
