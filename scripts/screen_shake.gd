@@ -1,4 +1,4 @@
-extends Camera3D
+extends Node3D
 
 @export_group("Shake Properties")
 @export var max_offset: Vector3 = Vector3(0.5, 0.5, 0.2)

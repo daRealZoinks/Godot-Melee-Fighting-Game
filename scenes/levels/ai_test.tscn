@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_srap8"]
 [ext_resource type="PackedScene" uid="uid://bj077rgwte1cn" path="res://scenes/prefabs/cube.tscn" id="2_egt5b"]
-[ext_resource type="PackedScene" uid="uid://ddc8k6gybq8ur" path="res://scenes/prefabs/character_body_3d.tscn" id="3_ds3pa"]
+[ext_resource type="PackedScene" uid="uid://ddc8k6gybq8ur" path="res://scenes/prefabs/player.tscn" id="3_ds3pa"]
 [ext_resource type="PackedScene" uid="uid://bnyyqxu02rj5f" path="res://scenes/prefabs/enemy.tscn" id="5_egt5b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
