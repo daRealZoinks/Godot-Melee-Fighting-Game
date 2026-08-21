@@ -14,6 +14,9 @@ extends PlayerState
 @export var coyote_time: float = 0.15
 @export var gravity_scale: float = 1.5
 
+@export var animation_player: AnimationPlayer
+@export var check_for_enemy_hitbox: Area3D
+
 var was_on_floor: bool
 
 var look_input: Vector2
@@ -78,3 +81,26 @@ func unhandled_input(event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = get_tree().create_timer(jump_buffer)
+	
+	if event.is_action_pressed("attack"):
+		var damageable = damageable_in_hitbox()
+		if damageable:
+			get_parent().transition_to("AttackState", damageable)
+		else:
+			animation_player.play("attack_miss")
+
+func damageable_in_hitbox() -> Node3D:
+	var bodies: Array[Node3D] = check_for_enemy_hitbox.get_overlapping_bodies()
+	bodies = bodies.filter(func(element): return element.find_child("Health") and element != player)
+	
+	var forward = -player.transform.basis.z
+	bodies.sort_custom(func(a, b): 
+		var angle_a = forward.angle_to((a.position - player.position).normalized())
+		var angle_b = forward.angle_to((b.position - player.position).normalized())
+		return angle_a < angle_b
+	)
+
+	if bodies.is_empty():
+		return null
+	else:
+		return bodies[0]

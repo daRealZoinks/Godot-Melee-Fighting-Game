@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_srap8"]
 [ext_resource type="PackedScene" uid="uid://bj077rgwte1cn" path="res://scenes/prefabs/cube.tscn" id="2_egt5b"]
 [ext_resource type="PackedScene" uid="uid://ddc8k6gybq8ur" path="res://scenes/prefabs/player.tscn" id="3_ds3pa"]
-[ext_resource type="PackedScene" uid="uid://bnyyqxu02rj5f" path="res://scenes/prefabs/enemy.tscn" id="5_egt5b"]
+[ext_resource type="Script" uid="uid://dk8gyo4wu04hv" path="res://scripts/enemy_spawner.gd" id="5_ds3pa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -96,35 +96,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73248, 0.5, -8.399323)
 [node name="Cube13" parent="NavigationRegion3D/Plane/Cubes" unique_id=717963980 instance=ExtResource("2_egt5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73248, 0.5, -8.399323)
 
-[node name="CharacterBody3D" parent="." unique_id=553121874 instance=ExtResource("3_ds3pa")]
+[node name="Player" parent="." unique_id=553121874 instance=ExtResource("3_ds3pa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Enemy" parent="." unique_id=132416769 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.02082, 0.99999905, -6.1264725)
-
-[node name="Enemy2" parent="." unique_id=609371072 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.2964568, 0.99999905, -5.955972)
-
-[node name="Enemy3" parent="." unique_id=143011330 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.3447075, 0.99999905, -4.9574447)
-
-[node name="Enemy4" parent="." unique_id=1645150207 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.74497, 0.99999905, 0.547873)
-
-[node name="Enemy5" parent="." unique_id=500579205 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.154417, 0.99999905, -0.74744284)
-
-[node name="Enemy6" parent="." unique_id=1291653840 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.2971973, 0.99999905, -9.066399)
-
-[node name="Enemy7" parent="." unique_id=1828290487 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.9756556, 0.99999905, -7.3268323)
-
-[node name="Enemy8" parent="." unique_id=1762836166 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.048837, 0.9999981, -7.7088995)
-
-[node name="Enemy9" parent="." unique_id=1014044304 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.012467, 0.9999981, -4.89878)
-
-[node name="Enemy10" parent="." unique_id=63677352 instance=ExtResource("5_egt5b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.004863, 0.9999981, -12.684245)
+[node name="EnemySpawner" type="Node3D" parent="." unique_id=1184958956 node_paths=PackedStringArray("player")]
+script = ExtResource("5_ds3pa")
+player = NodePath("../Player")

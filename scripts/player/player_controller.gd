@@ -7,8 +7,7 @@ class_name PlayerController
 func _input(event: InputEvent) -> void:
 	mouse_look.input(event)
 	
-	if event.is_action_pressed("attack"):
-		state_machine.transition_to("AttackState")
+	state_machine.unhandled_input(event)
 
 func _physics_process(delta: float) -> void:
 	state_machine.physics_process(delta)

@@ -5,6 +5,7 @@ class_name StateMachine
 
 var current_state: PlayerState
 var states: Dictionary = {}
+var target_body: Node3D
 
 func _ready() -> void:
 	await owner.ready
@@ -21,13 +22,14 @@ func _ready() -> void:
 func physics_process(delta: float) -> void:
 	current_state.physics_process(delta)
 
-func _unhandled_input(event: InputEvent) -> void:
+func unhandled_input(event: InputEvent) -> void:
 	current_state.unhandled_input(event)
 
-func transition_to(target_state_name: String) -> void:
+func transition_to(target_state_name: String, body: Node3D = null) -> void:
 	if not states.has(target_state_name):
 		return
 	
+	target_body = body
 	current_state.exit()
 	current_state = states[target_state_name]
 	current_state.enter()

@@ -13,7 +13,7 @@ class_name Enemy
 @onready var chicken_audio_file := $ChickenSound
 @onready var health := $Health
 
-@onready var player = $"../CharacterBody3D"
+var player: PlayerController
 
 var hatch_audio_file = preload("res://scenes/prefabs/hatch.tscn")
 var rng = RandomNumberGenerator.new()
@@ -21,6 +21,7 @@ var rng = RandomNumberGenerator.new()
 var timer: SceneTreeTimer
 
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player") as PlayerController
 	change_navigation_point()
 
 func _physics_process(delta: float) -> void:
