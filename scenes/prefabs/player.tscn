@@ -187,6 +187,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_50rl7"]
 resource_name = "heavy_finisher_right"
+length = 2.0
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"hit",
@@ -199,10 +200,10 @@ tracks/0/path = NodePath("Neck/Arms/ArmsMeshes/RightShoulder:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.03333333, 0, 0.40161538, 0.4996804, 0.8003196, 1),
-"transitions": PackedFloat32Array(1, 3, -3, 1, 1, 3),
+"times": PackedFloat32Array(0, 0.56828207, 0.6663471, 1.3003197, 2),
+"transitions": PackedFloat32Array(1, -3, 1, -2, 3),
 "update": 0,
-"values": [Vector3(-0.6457718, -0.59166664, 0.9843657), Vector3(-0.6457718, -0.59166664, 0.9843657), Vector3(-0.5497787, -1.7959439, 1.246165), Vector3(0.22340214, 0.53232545, 1.1030481), Vector3(0.22340214, 0.53232545, 1.1030481), Vector3(-0.6457718, -0.59166664, 0.9843657)]
+"values": [Vector3(-0.6457718, -0.59166664, 0.9843657), Vector3(-0.5497787, -1.7959439, 1.246165), Vector3(0.22340214, 0.53232545, 1.1030481), Vector3(0.22340214, 0.53232545, 1.1030481), Vector3(-0.6457718, -0.59166664, 0.9843657)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -211,8 +212,8 @@ tracks/1/path = NodePath("Neck/Arms/ArmsMeshes/RightShoulder/Forearm/Elbow:rotat
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.40161538, 0.45, 0.4993608, 0.8, 1),
-"transitions": PackedFloat32Array(1, 0.3, 0.3, 1, -1.8660665, 1),
+"times": PackedFloat32Array(0, 0.56828207, 0.6166667, 0.6660275, 1.3000002, 2),
+"transitions": PackedFloat32Array(1, 0.3, 0.3, 1, -2, 1),
 "update": 0,
 "values": [Vector3(0.7487463, -3.3318336, 2.9600785), Vector3(0.7487463, -3.3318336, 2.9600785), Vector3(1.4294246, -3.296927, 2.9600785), Vector3(3.270747, -3.122394, 3.6233034), Vector3(3.270747, -3.122394, 3.6233034), Vector3(0.7487463, -3.3318336, 2.9600785)]
 }
@@ -223,7 +224,7 @@ tracks/2/path = NodePath("Swing:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.13333334),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -235,7 +236,7 @@ tracks/3/path = NodePath("Neck/Arms/ArmsMeshes/LeftShoulder:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.45, 1),
+"times": PackedFloat32Array(0, 0.5666667, 0.6166667, 2),
 "transitions": PackedFloat32Array(1.8025011, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.9424778, 0.70511305, -0.9843657), Vector3(0.07853982, 0.18151425, -1.0105456), Vector3(-1.5446163, 1.1414453, -0.6265732), Vector3(-0.9424778, 0.70511305, -0.9843657)]
@@ -247,7 +248,7 @@ tracks/4/path = NodePath("Neck/Arms/ArmsMeshes/LeftShoulder/Forearm/Elbow:rotati
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4, 1),
+"times": PackedFloat32Array(0, 0.5666667, 2),
 "transitions": PackedFloat32Array(2.3784142, 1, 1),
 "update": 0,
 "values": [Vector3(0.74874634, -2.951352, -2.9600785), Vector3(1.1414453, -2.4190264, -2.523746), Vector3(0.74874634, -2.951352, -2.9600785)]
@@ -259,8 +260,8 @@ tracks/5/path = NodePath("Neck/AnimationPivot:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.5, 0.8666667, 1),
-"transitions": PackedFloat32Array(2.3784142, 2.1435473, 0.45062515, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 0.6666667, 1.3666668, 2),
+"transitions": PackedFloat32Array(2.3784142, 2.1435473, 0.45062515, -2, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-0.034906585, -0.05235988, 0), Vector3(0.034906585, 0.034906585, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
@@ -271,11 +272,11 @@ tracks/6/path = NodePath("StateMachine/AttackState")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.33333334),
+"times": PackedFloat32Array(0.6666667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"hit_enemy"
+"method": &"hit_enemy_finisher"
 }]
 }
 
@@ -312,7 +313,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Swing:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -360,7 +361,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "method"
 tracks/6/imported = false
-tracks/6/enabled = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("StateMachine/AttackState")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true

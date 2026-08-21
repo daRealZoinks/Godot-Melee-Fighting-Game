@@ -31,14 +31,25 @@ const TIME_TO_ATTACK: float = 0.15
 var combo_index: int = 0
 var input_buffered: bool = false
 
+var enemy_health: Health
+
 func enter() -> void:
+	if not get_parent().target_body:
+		return
+	
 	player.velocity = Vector3.ZERO
+	
+	enemy_health = get_parent().target_body.find_child("Health")
+	
 	execute_attack()
 
 func execute_attack() -> void:
 	input_buffered = false
-	var animation_name = combo_animations.keys()[combo_index]
-	animation_player.play(animation_name)
+	
+	if enemy_health.current_health > finishing_animation["heavy_finisher_right"]:
+		animation_player.play(combo_animations.keys()[combo_index])
+	else:
+		animation_player.play("heavy_finisher_right")
 
 func exit() -> void:
 	pass
@@ -66,22 +77,18 @@ func get_into_position_for_attack() -> void:
 		tween.tween_method(func(value): neck.rotation.x = value, neck.rotation.x, (neck.transform.looking_at(target_look_at)).basis.get_euler().x, TIME_TO_ATTACK)
 
 func hit_enemy() -> void:
-	if not get_parent().target_body:
-		return
-	
-	var enemy_health = get_parent().target_body.find_child("Health") as Health
-	
 	if enemy_health:
+		enemy_health.take_damage(combo_animations[combo_animations.keys()[combo_index]], player.position)
+		cameraShake.add_shake(0.5, 0.35)
 		attack_sound_effect.play()
-		
-		if enemy_health.current_health < combo_animations["punch_right"]:
-			get_parent().target_body.velocity = (get_parent().target_body.position - player.position) * 40 + Vector3.UP * 12
-			cameraShake.add_shake(0.75, 1)
-		else:
-			cameraShake.add_shake(0.5, 0.35)
-		
-		enemy_health.take_damage(combo_animations["punch_right"], player.position)
-	get_parent().target_body = null
+
+func hit_enemy_finisher() -> void:
+	if enemy_health:
+		enemy_health.take_damage(finishing_animation["heavy_finisher_right"], player.position)
+		cameraShake.add_shake(0.75, 1)
+		get_parent().target_body.velocity = (get_parent().target_body.position - player.position) * 40 + Vector3.UP * 12
+		get_parent().target_body = null
+		get_parent().transition_to("LocomotionState")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name in combo_animations:
@@ -89,4 +96,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		if input_buffered:
 			execute_attack()
 		else:
+			get_parent().target_body = null
 			get_parent().transition_to("LocomotionState")
